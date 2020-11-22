@@ -104,12 +104,12 @@ if (isset($_POST['Save'])) {
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<!-- Font-->
-	<link rel="stylesheet" type="text/css" href="registration/css/opensans-font.css">
-	<link rel="stylesheet" type="text/css" href="registration/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="reg/css/opensans-font.css">
+	<link rel="stylesheet" type="text/css" href="reg/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 	<!-- Main Style Css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="registration/css/style.css" />
+	<link rel="stylesheet" href="reg/css/style.css" />
 	<style>
 		.fa,
 		.fas {
