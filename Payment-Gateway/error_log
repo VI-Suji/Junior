@@ -1,0 +1,2 @@
+[18-Nov-2020 15:31:48 UTC] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, null given in /home/ezitmxze/test.istetkmce.in/Payment-Gateway/razorPaySuccess.php on line 26
+[18-Nov-2020 15:31:48 UTC] PHP Warning:  mysqli_error() expects parameter 1 to be mysqli, null given in /home/ezitmxze/test.istetkmce.in/Payment-Gateway/razorPaySuccess.php on line 30

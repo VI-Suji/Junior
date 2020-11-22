@@ -1,7 +1,6 @@
 <?php
 include('includes/config.php');
 if (isset($_POST['Save'])) {
-	echo "<script type='text/javascript'>alert('Sorry already registerd Thankyou');</script>";
 	$flag = 0;
 	$temp = $_POST['interest'];
 	if ((count($temp) < 2)) {
@@ -29,7 +28,7 @@ if (isset($_POST['Save'])) {
 		$ser3 = $temp[2];
 	}
 	if ($flag == 0) {
-		echo "<script type='text/javascript'>alert('Flag error');</script>";
+		// echo "<script type='text/javascript'>alert('Flag error');</script>";
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$dob = $_POST['dob'];
@@ -45,7 +44,7 @@ if (isset($_POST['Save'])) {
 		$results = $query->fetchAll(PDO::FETCH_OBJ);
 		if ($query->rowCount() > 0) {
 			echo "<script type='text/javascript'>alert('Sorry already registerd Thankyou');</script>";
-			header('location:register.php');
+			header('location:regi.php');
 		} else {
 
 			$sql = "SELECT COUNT(*) as total FROM `register` WHERE `batch` = :batch ";
@@ -60,6 +59,8 @@ if (isset($_POST['Save'])) {
 				$cnt = "0" . $cnt;
 			}
 			$id = "ISTETKMCE/20/" . $batch . "/" . $cnt;
+
+			// echo ($id . '' . $name . '' . $email . '' . $batch . '' . $dob . '' . $address . '' . $mobile . '' . $inter1 . '' . $inter2 . '' . $car1 . '' . $car2 . '' . $ser1 . '' . $ser2 . '' . $ser3 . '' . $password . '');
 
 			// :id, :name, :email, :dob, :batch, :address, :mobile, :inter1, :inter2, :car1, :car2, :ser1, :ser2, :ser3, :pass
 
@@ -81,9 +82,14 @@ if (isset($_POST['Save'])) {
 			$query->bindParam(':ser3', $ser3, PDO::PARAM_STR);
 			$query->bindParam(':pass', $password, PDO::PARAM_STR);
 			$query->execute();
-			$lastInsertId = $dbh->lastInsertId();
-			if ($lastInsertId) {
+			$sql = "SELECT * FROM `register` WHERE `id` = :id ";
+			$query = $dbh->prepare($sql);
+			$query->bindParam(':id', $id, PDO::PARAM_STR);
+			$query->execute();
+			$results = $query->fetchAll(PDO::FETCH_OBJ);
+			if ($query->rowCount() > 0) {
 				echo "<script type='text/javascript'>alert('Successfully registered for ISTE TKMCE');</script>";
+				header('location:login.php');
 			}
 		}
 	}
@@ -126,340 +132,339 @@ if (isset($_POST['Save'])) {
 				<form class="form-register" method="post">
 					<div id="form-total">
 						<!-- SECTION 1 -->
-						<h2>
-							<p class="step-icon"><span>01</span></p>
+						<br>
+
+						<h2 style=" color:purple; text-align: center;">
+							<img style="text-align: left; width:100px; height : 100px;" src="iste.png">
+							<!-- <p class="step-icon"><span>01</span></p> -->
+							<span class="step-text">REGISTRATION</span>
+						</h2>
+						<br>
+						<br>
+
+						<h2 style="color:purple; text-align: center;">
+							<!-- <p class="step-icon"><span>01</span></p> -->
 							<span class="step-text">Personal Infomation</span>
 						</h2>
-						<section>
-							<div class="inner">
-								<div class="wizard-header">
-									<h3 class="heading">Personal Infomation</h3>
-									<p>Please enter your infomation and proceed to the next step so we can build your
-										accounts. </p>
+						<br>
+						<div class="inner">
+
+							<div class="form-row  col-sm-12">
+								<div class="form-holder form-holder-2 col-sm-6">
+									<fieldset>
+										<legend><i class="fas fa-address-book "> Name</i></legend>
+										<input type="text" name="name" id="your_name" class="form-control" placeholder="" required>
+									</fieldset>
 								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend><i class="fas fa-address-book "> Name</i></legend>
-											<input type="text" name="name" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="" required>
-										</fieldset>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend><i class="fas fa-mail-bulk"> Email</i></legend>
-											<input type="email" name="email" id="email" class="form-control " pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="@gmail.com/@tkmce.ac.in" required>
-										</fieldset>
-										<div class="alert" role="alert" style="display: none;" id="emailalert">
-											<h6 class="p-0 m-0"> * please enter a valid email</h6>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder">
-										<fieldset>
-											<legend><i class="fa fa-calendar" aria-hidden="true"></i> Date of Birth
-											</legend>
-											<input type="date" class="form-control" id="first-name" name="dob" placeholder="Date of Birth" required>
-										</fieldset>
-									</div>
-									<div class="form-holder">
-										<fieldset>
-											<legend><i class="fa fa-book" aria-hidden="true"> Batch</i></legend>
-											<input title="Eg. T1B/R1 etc" type="text" class="form-control" id="last-name" name="batch" placeholder="Eg: T1A" required>
-										</fieldset>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend><i class="fas fa-mobile"> Mobile No </i></legend>
-											<input type="number" class="form-control" id="phone" name="phone" placeholder="777 7777 777" required>
-										</fieldset>
-										<div class="alert" role="alert" style="display: none;" id="phonealert">
-											<h6 class="p-0 m-0"> * please enter a valid phone number</h6>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend><i class="fas fa-address-book "> Address</i></legend>
-											<textarea style="border: 0px; width: 100%; resize: none;" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
-										</fieldset>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="form-holder form-holder-2">
-										<fieldset>
-											<legend><i class="fas fa-lock"></i> Password</legend>
-											<input type="password" class="form-control" id="ssn" name="password" required>
-										</fieldset>
+								<div class="form-holder form-holder-2 col-sm-6">
+									<fieldset>
+										<legend><i class="fas fa-mail-bulk"> Email</i></legend>
+										<input type="email" name="email" id="email" class="form-control " pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="@gmail.com/@tkmce.ac.in" required>
+									</fieldset>
+									<div class="alert" role="alert" style="display: none;" id="emailalert">
+										<h6 class="p-0 m-0"> * please enter a valid email</h6>
 									</div>
 								</div>
 							</div>
-						</section>
+							<div class="form-row col-sm-12">
+								<div class="form-holder col-sm-6">
+									<fieldset>
+										<legend><i class="fa fa-calendar" aria-hidden="true"></i> Date of Birth
+										</legend>
+										<input type="date" class="form-control" id="first-name" name="dob" placeholder="Date of Birth" required>
+									</fieldset>
+								</div>
+								<div class="form-holder col-sm-6">
+									<fieldset>
+										<legend><i class="fa fa-book" aria-hidden="true"> Batch</i></legend>
+										<input title="Eg. T1B/R1 etc" type="text" class="form-control" id="last-name" name="batch" placeholder="Eg: T1A" required>
+									</fieldset>
+								</div>
+							</div>
+							<div class="form-row col-sm-12">
+								<div class="form-holder form-holder-2 col-sm-6">
+									<fieldset>
+										<legend><i class="fas fa-mobile"> Mobile No </i></legend>
+										<input type="number" class="form-control" id="phone" name="mobile" placeholder="777 7777 777" required>
+									</fieldset>
+									<div class="alert" role="alert" style="display: none;" id="phonealert">
+										<h6 class="p-0 m-0"> * please enter a valid phone number</h6>
+									</div>
+								</div>
+								<div class="form-holder form-holder-2 col-sm-6">
+									<fieldset>
+										<legend><i class="fas fa-lock"></i> Password</legend>
+										<input type="password" class="form-control" id="ssn" name="password" required>
+									</fieldset>
+								</div>
+							</div>
+							<div class="form-row col-sm-12">
+								<div class="form-holder form-holder-2">
+									<fieldset>
+										<legend><i class="fas fa-address-book "> Address</i></legend>
+										<textarea name="address" style="border: 0px; width: 100%; resize: none;" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+									</fieldset>
+								</div>
+							</div>
+						</div>
 						<!-- SECTION 2 -->
-						<h2>
-							<p class="step-icon"><span>02</span></p>
+						<br>
+						<h2 style="color:purple; text-align: center;">
+							<!-- <p class="step-icon"><span>02</span></p> -->
 							<span class="step-text">Add your Interests</span>
 						</h2>
-						<section>
-							<div class='container-fluid'>
-								<h5 class="checkbox_head" style="color:rgb(109, 111, 216);">Select atleast 2 Interests,
-									2 Career preferences and 3 Services</h5>
-								<div class="form-row mt-1 mb-1">
+						<br>
+						<div>
+							<h5 class="checkbox_head" style="color:rgb(109, 111, 216); text-align:center;">Select atleast 2 Interests,
+								2 Career preferences and 3 Services</h5>
+							<div class="form-row mt-1 mb-1">
 
-									<div class=" form-group col-sm-6 col-12 p-2">
+								<div class=" form-group col-sm-6 col-12 p-2">
 
-										<div class="dropdown open drop-1">
-											<button class="btn  dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<h5 class='title_c'>Special Interest</h5>
-											</button>
-											<div class="dropdown-menu w-100 pl-3 pr-3" aria-labelledby="triggerId">
-												<p class="dropdown-item pt-0 pb-0">
+									<div class="dropdown open drop-1">
+										<button class="btn  dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<h5 class='title_c'>Special Interest</h5>
+										</button>
+										<div class="dropdown-menu w-100 pl-3 pr-3" aria-labelledby="triggerId">
+											<p class="dropdown-item pt-0 pb-0">
+												<div class="form-check">
+													<div id="check1" name="check1">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Sports">
+															Sports
+														</label>
+													</div>
 													<div class="form-check">
-														<div id="check1" name="check1">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Sports">
-																Sports
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Games">
-																Games
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Reading">
-																Reading
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Literacy">
-																Literary
-															</label>
-														</div>
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Drama">
-																Drama
-															</label>
-														</div>
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Music">
-																Music
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Photography">
-																Photography
-															</label>
-														</div>
-														<script type="text/javascript">
-															$(document).ready(function() {
-																$("input[name='interest[]']").change(function() {
-																	var maxAllowed = 2;
-																	var cnt = $("input[name='interest[]']:checked").length;
-																	if (cnt > maxAllowed) {
-																		$(this).prop("checked", "");
-																		alert('Select maximum ' + maxAllowed + ' Interests!');
-																	}
-																});
-															});
-														</script>
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Games">
+															Games
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Reading">
+															Reading
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Literacy">
+															Literary
+														</label>
 													</div>
 
-												</p>
-
-											</div>
-										</div>
-									</div>
-
-
-
-									<div class=" form-group col-sm-6 col-12 p-2">
-
-										<div class="dropdown open  drop-1">
-											<button class="btn  dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<h5 class='title_c'>Career Preference</h5>
-											</button>
-											<div class="dropdown-menu w-100 pr-3 pl-3" aria-labelledby="triggerId">
-												<p class="dropdown-item" href="#">
 													<div class="form-check">
-														<div id="check2" name="check2">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Teaching">
-																Teaching
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Research Work">
-																Research Work
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Government Job">
-																Govt. Job
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Public Sector">
-																Public Sector Undertaking
-															</label>
-														</div>
-
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Private">
-																Private Industry
-															</label>
-														</div>
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Studies">
-																Higher Studies
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="career[]" id="" value="Management Studies">
-																Management Studies
-															</label>
-														</div>
-														<script type="text/javascript">
-															$(document).ready(function() {
-																$("input[name='career[]']").change(function() {
-																	var maxAllowed = 2;
-																	var cnt = $("input[name='career[]']:checked").length;
-																	if (cnt > maxAllowed) {
-																		$(this).prop("checked", "");
-																		alert('Select maximum ' + maxAllowed + ' Preferences!');
-																	}
-																});
-															});
-														</script>
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Drama">
+															Drama
+														</label>
 													</div>
 
-												</p>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Music">
+															Music
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="interest[]" id="interest" value="Photography">
+															Photography
+														</label>
+													</div>
+													<script type="text/javascript">
+														$(document).ready(function() {
+															$("input[name='interest[]']").change(function() {
+																var maxAllowed = 2;
+																var cnt = $("input[name='interest[]']:checked").length;
+																if (cnt > maxAllowed) {
+																	$(this).prop("checked", "");
+																	alert('Select maximum ' + maxAllowed + ' Interests!');
+																}
+															});
+														});
+													</script>
+												</div>
 
-											</div>
+											</p>
+
 										</div>
 									</div>
+								</div>
 
-									<div class=" form-group col-sm-12 col-12 p-2">
-										<div class="dropdown open drop-1">
-											<button class="btn dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-												<h5 class='title_c'>Type of services</h5>
-											</button>
-											<div style="font-size: small;" class="dropdown-menu w-100 pr-4 pl-4" aria-labelledby="triggerId">
-												<p class="dropdown-item" href="#">
+
+
+								<div class=" form-group col-sm-6 col-12 p-2">
+
+									<div class="dropdown open  drop-1">
+										<button class="btn  dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<h5 class='title_c'>Career Preference</h5>
+										</button>
+										<div class="dropdown-menu w-100 pr-3 pl-3" aria-labelledby="triggerId">
+											<p class="dropdown-item" href="#">
+												<div class="form-check">
+													<div id="check2" name="check2">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Teaching">
+															Teaching
+														</label>
+													</div>
 													<div class="form-check">
-														<div id="check3" name="check3">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Coaching for competitive examination, job interview">
-																Coaching for competitive examination, job interview
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Supervisory and
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Research Work">
+															Research Work
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Government Job">
+															Govt. Job
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Public Sector">
+															Public Sector Undertaking
+														</label>
+													</div>
+
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Private">
+															Private Industry
+														</label>
+													</div>
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Studies">
+															Higher Studies
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="career[]" id="" value="Management Studies">
+															Management Studies
+														</label>
+													</div>
+													<script type="text/javascript">
+														$(document).ready(function() {
+															$("input[name='career[]']").change(function() {
+																var maxAllowed = 2;
+																var cnt = $("input[name='career[]']:checked").length;
+																if (cnt > maxAllowed) {
+																	$(this).prop("checked", "");
+																	alert('Select maximum ' + maxAllowed + ' Preferences!');
+																}
+															});
+														});
+													</script>
+												</div>
+
+											</p>
+
+										</div>
+									</div>
+								</div>
+
+								<div class=" form-group col-sm-12 col-12 p-2">
+									<div class="dropdown open drop-1">
+										<button class="btn dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<h5 class='title_c'>Type of services</h5>
+										</button>
+										<div style="font-size: small;" class="dropdown-menu w-100 pr-4 pl-4" aria-labelledby="triggerId">
+											<p class="dropdown-item" href="#">
+												<div class="form-check">
+													<div id="check3" name="check3">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Coaching for competitive examination, job interview">
+															Coaching for competitive examination, job interview
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Supervisory and
 															communication skill development">
-																Supervisory and
-																communication skill
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Training for self-employment">
-																Training for self-employment
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Guidance on job opportunities in India and abroad">
-																Guidance on job opportunities
-																in India and abroad
-															</label>
-														</div>
-
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Arranging training in industries and visit to industry">
-																Arranging training in industries and visit to industry
-															</label>
-														</div>
-
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="Awareness on social, cultural and ethical values and norms">
-																Awareness on social, cultural and ethical values and
-																norms
-															</label>
-														</div>
-														<div class="form-check">
-															<label class="form-check-label">
-																<input type="checkbox" class="form-check-input" name="services[]" id="" value="General counselling services">
-																General counselling services
-															</label>
-														</div>
-														<script type="text/javascript">
-															$(document).ready(function() {
-																$("input[name='services[]']").change(function() {
-																	var maxAllowed = 3;
-																	var cnt = $("input[name='services[]']:checked").length;
-																	if (cnt > maxAllowed) {
-																		$(this).prop("checked", "");
-																		alert('Select maximum ' + maxAllowed + ' Services!');
-																	}
-																});
-															});
-														</script>
+															Supervisory and
+															communication skill
+														</label>
 													</div>
-												</p>
-											</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Training for self-employment">
+															Training for self-employment
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Guidance on job opportunities in India and abroad">
+															Guidance on job opportunities
+															in India and abroad
+														</label>
+													</div>
+
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Arranging training in industries and visit to industry">
+															Arranging training in industries and visit to industry
+														</label>
+													</div>
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="Awareness on social, cultural and ethical values and norms">
+															Awareness on social, cultural and ethical values and
+															norms
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="services[]" id="" value="General counselling services">
+															General counselling services
+														</label>
+													</div>
+													<script type="text/javascript">
+														$(document).ready(function() {
+															$("input[name='services[]']").change(function() {
+																var maxAllowed = 3;
+																var cnt = $("input[name='services[]']:checked").length;
+																if (cnt > maxAllowed) {
+																	$(this).prop("checked", "");
+																	alert('Select maximum ' + maxAllowed + ' Services!');
+																}
+															});
+														});
+													</script>
+												</div>
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
-
-						</section>
+						</div>
 						<!-- SECTION 3 -->
-						<h2>
-							<p class="step-icon"><span>03</span></p>
+						<br>
+						<h2 style="color:purple; text-align: center;">
+							<!-- <p class="step-icon"><span>03</span></p> -->
 							<span class="step-text">Declaration</span>
 						</h2>
-						<section>
-							<p style="padding: 5em;" "font-size:small;font-weight:500;font-family:sans-serif d-flex text-align-justify">
-								I agree to abide by the rules and the regulations of the ISTE regarding Student
-								Membership and
-								functioning of Student Chapters.Single Student Membership will not be entertained. <br>
-								Kindly apply
-								along with all Students and through ISTE Student Chapter only </p>
-
-						</section>
+						<br>
+						<p style=" color:rgb(109, 111, 216); padding: 10px;" "font-size:small;font-weight:500;font-family:sans-serif d-flex text-align-justify">
+							I agree to abide by the rules and the regulations of the ISTE regarding Student
+							Membership and
+							functioning of Student Chapters.Single Student Membership will not be entertained. <br>
+							Kindly apply
+							along with all Students and through ISTE Student Chapter only.</p>
+						<div style="text-align:center;"> <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Save</button></div>
 					</div>
-					<!-- <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Save</button> -->
 				</form>
 			</div>
 		</div>
 	</div>
 	<script src="registration/js/jquery-3.3.1.min.js"></script>
-	<script src="registration/js/jquery.steps.js"></script>
+	<!-- <script src="registration/js/jquery.steps.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="registration/js/main.js"></script>
