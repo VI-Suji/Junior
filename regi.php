@@ -1,8 +1,5 @@
 <?php
 include('includes/config.php');
-if (isset($_POST['Login'])) {
-	header('location:login.php');
-}
 if (isset($_POST['Save'])) {
 	$flag = 0;
 	$temp = $_POST['interest'];
@@ -460,7 +457,7 @@ if (isset($_POST['Save'])) {
 							functioning of Student Chapters.Single Student Membership will not be entertained. <br>
 							Kindly apply
 							along with all Students and through ISTE Student Chapter only.</p>
-						<div style="text-align:center;"> <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Register</button>&nbsp; <button name="Login" type="submit" class="btn btn-lg pt-1 pb-1">Login </button></div>
+						<div style="text-align:center;"> <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Register</button>&nbsp; <a href="login.php" class="btn btn-lg pt-1 pb-1">Login </a></div>
 						<div style="text-align:center;"> </div>
 					</div>
 				</form>
