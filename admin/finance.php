@@ -7,10 +7,10 @@ $password=$_POST['password'];
 if($password=="finance@2020")
 {
 echo "<script type='text/javascript'> document.location = 'userlist_finance.php'; </script>";
-} else{
-  
-  echo "<script>alert('Invalid Details');</script>";
-
+} else if($password=="registration#2021"){
+	echo "<script type='text/javascript'> document.location = 'userlist.php'; </script>";
+} else {
+	echo "<script>alert('Invalid Details');</script>";
 }
 
 }
@@ -43,7 +43,7 @@ echo "<script type='text/javascript'> document.location = 'userlist_finance.php'
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
-						<h1 class="text-center text-bold mt-4x">Finance Login</h1>
+						<h1 class="text-center text-bold mt-4x">Execom Login</h1>
 						<div class="well row pt-2x pb-3x bk-light">
 							<div class="col-md-8 col-md-offset-2">
 								<form method="post">
