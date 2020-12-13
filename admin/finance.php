@@ -3,7 +3,7 @@ session_start();
 include('includes/config.php');
 if(isset($_POST['login']))
 {
-$password=md5($_POST['password']);
+$password=$_POST['password'];
 if($password=="finance@2020")
 {
 echo "<script type='text/javascript'> document.location = 'userlist_finance.php'; </script>";
