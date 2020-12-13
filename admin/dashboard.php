@@ -70,7 +70,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 												</div>
 												<a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 											</div>
-											<div class="col-md-3">
+										</div>
+										<div class="col-md-3">
 											<div class="panel panel-default">
 												<div class="panel-body bk-primary text-light">
 													<div class="stat-panel text-center">
@@ -86,7 +87,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 													</div>
 												</div>
 											</div>
-										</div>
 
 									</div>
 								</div>
