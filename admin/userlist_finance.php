@@ -142,9 +142,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<td>
                                                         <?php if($result->flag == 1)
                                                     {?>
-                                                    <a href="userlist_finance.php?confirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Reject')">Reject <i class="fa fa-check-circle"></i></a> 
+                                                    <a href="userlist_finance.php?confirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Accept')">Accept <i class="fa fa-check-circle"></i></a> 
                                                     <?php } else {?>
-                                                    <a href="userlist_finance.php?unconfirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Accept')">Accept <i class="fa fa-times-circle"></i></a>
+                                                    <a href="userlist_finance.php?unconfirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Reject')">Reject <i class="fa fa-times-circle"></i></a>
 													<?php } ?>
 															<br>
 															<!-- <a href="edit-pay.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp; -->
