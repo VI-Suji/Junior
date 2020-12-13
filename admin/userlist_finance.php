@@ -9,7 +9,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$id = $_GET['del'];
 		$name = $_GET['name'];
 
-		$sql = "delete from user_voucher WHERE id=:id";
+		$sql = "delete from payments WHERE user_id=:id";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':id', $id, PDO::PARAM_STR);
 		$query->execute();
@@ -147,8 +147,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <a href="userlist_finance.php?unconfirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Accept')">Accept <i class="fa fa-times-circle"></i></a>
 													<?php } ?>
 															<br>
-															<a href="edit-pay.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp;
-															<!-- <a href="userlist.php?del=<?php echo $result->id; ?>&name=<?php echo htmlentities($result->email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp; -->
+															<!-- <a href="edit-pay.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp; -->
+															<a href="userlist.php?del=<?php echo $result->id; ?>&name=<?php echo htmlentities($result->email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 														</td>
 													</tr>
 											<?php $cnt = $cnt + 1;
