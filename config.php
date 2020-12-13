@@ -1,8 +1,8 @@
 <?php
-  define('DB_HOST','istetkmce.in');
-  define('DB_NAME','ezitmxze_test');
-  define('DB_USER','ezitmxze_tests');
-  define('DB_PASS','Istetkmce@2019');
+  define('HOST','istetkmce.in');
+  define('DB','ezitmxze_test');
+  define('USER','ezitmxze_tests');
+  define('PASS','Istetkmce@2019');
 
 // define('DB_HOST','localhost');
 // define('DB_USER','root');

@@ -1,15 +1,4 @@
-<?php
-session_start();
-include('includes/config.php');
-if (strlen($_SESSION['alogin']) != 0) {
-    $sql = "SELECT * FROM `payments` WHERE `user_id`=:email";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
-    $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    if ($query->rowCount() > 0) {
-?>
-        <html lang="en">
+<html lang="en">
 
         <head>
             <meta charset="UTF-8">
@@ -77,6 +66,17 @@ if (strlen($_SESSION['alogin']) != 0) {
         </head>
 
         <body>
+        <?php
+session_start();
+include('includes/config.php');
+if (strlen($_SESSION['alogin']) != 0) {
+    $sql = "SELECT * FROM `payments` WHERE `contact_email`=:email";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
+    $query->execute();
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    if ($query->rowCount() > 0) {
+?>
             <div class="container-fluid text-responsive">
 
 
@@ -86,7 +86,7 @@ if (strlen($_SESSION['alogin']) != 0) {
                         <div class="row p-4 mt-1 rounded " style="background-color:rgb(22, 22, 22); color:white;">
                             <img src="iste.png" class="img-responsive img-fluid col-md-1  col-sm-3  rounded-circle " id="img" alt="">
                             <h2 class="mx-auto text-center col-md-11 my-auto"> INDIAN
-                                SOCIETY FOR TECHNICAL EDUCATION </h2>
+                                INDIAN SOCIETY FOR TECHNICAL EDUCATION </h2>
                         </div>
                         <h6 class="mx-auto  text-center p-2" style="border-bottom:1px solid;border-top:1px solid; font-weight:700; font-family: 'Varela Round', sans-serif;">
                             APPLICATION FORM FOR STUDENT
@@ -154,7 +154,7 @@ if (strlen($_SESSION['alogin']) != 0) {
                                                 <tr scope="row">
                                                     <td><i class="fas fa-rupee-sign"> Amount </i></td>
                                                     <td class="text-center"><span class="md-span">:</span></td>
-                                                    <td><span>400</span></td>
+                                                    <td><span>415</span></td>
                                                 </tr>
 
                                                 <tr scope="row">

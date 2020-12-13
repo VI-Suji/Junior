@@ -4,6 +4,9 @@ include('includes/config.php');
 if (isset($_POST['login'])) {
     $email = $_POST['username'];
     $password = md5($_POST['password']);
+    if($email=='admin' && $password=='21232f297a57a5a743894a0e4a801fc3'){
+        echo "<script type='text/javascript'> document.location = 'admin/index.php'; </script>";
+    }
     $sql = "SELECT email,password FROM register WHERE email=:email and password=:password";
     $query = $dbh->prepare($sql);
     $query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -12,7 +15,16 @@ if (isset($_POST['login'])) {
     $results = $query->fetchAll(PDO::FETCH_OBJ);
     if ($query->rowCount() > 0) {
         $_SESSION['alogin'] = $_POST['username'];
-        echo "<script type='text/javascript'> document.location = 'printform.php'; </script>";
+        $sql = "SELECT * FROM payments WHERE contact_email=:email";
+        $query = $dbh->prepare($sql);
+        $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
+        $query->execute();
+        $results = $query->fetchAll(PDO::FETCH_OBJ);
+        if($query->rowCount()>0){
+            echo "<script type='text/javascript'> document.location = 'success.php'; </script>";
+        }else{
+            echo "<script type='text/javascript'> document.location = 'printform.php'; </script>";
+        }
     } else {
 
         echo "<script>alert('Invalid Details');</script>";

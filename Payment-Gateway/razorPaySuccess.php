@@ -1,11 +1,11 @@
 <?php
 session_start();
-require('../includes/config.php');
+require('database.php');
 require_once('config.php');
 include('Razorpay.php');
 
 use Razorpay\Api\Api;
-$api = new Api('rzp_live_ykPL0KfoECSN6h', '382NeEeEFfHJG3urmSdwaGWi'); //enter your test key credentials here
+$api = new Api('rzp_live_ykPL0KfoECSN6h', '382NeEeEFfHJG3urmSdwaGWi');//enter your test key credentials here
 $payment = $api->payment->fetch($_REQUEST['razorpay_payment_id']); //post variable in index.php checkout.js
 $text =  json_encode($payment->toArray());
 $contact_number =  $payment->contact;

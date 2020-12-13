@@ -204,17 +204,16 @@ if (strlen($_SESSION['alogin']) != 0) {
                         <!-- <div class="col-5 rounded shadow text-center p-md-5 pt-3 pb-2 mt-2 mt-md-4 mr-3"
                         style="border-right:1px solid;border-left:1px solid;">
                         <h4 class="my-auto">Payment: Nil</h4>
-                    </div> 
+                    </div> -->
                     <div class="col-5  pb-md-5 pt-3 pb-2 pt-md-4 mt-md-4 ml-md-3 rounded shadow text-center mt-2 " style="border-right:1px solid;border-left:1px solid;">
-                        <h4 class="pb-0 pt-0 mt-3"><button onclick="printOut()" type="button" class="btn btn-primary  pl-md-5 pr-md-5  my-auto">Print</button></h4>
-                    </div>-->
+                        <h4 class="pb-0 pt-0 mt-3"><a href="Payment-Gateway/index.php" class="btn btn-primary  pl-md-5 pr-md-5  my-auto">Continue</a></h4>
+                    </div>
                     </div>
 
                 </div>
 
 
             </div>
-            <?php include('Payment-Gateway/index.php'); ?>
             <script>
                 // function printOut() {
 
