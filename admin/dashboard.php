@@ -70,6 +70,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 												</div>
 												<a href="userlist.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 											</div>
+											<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='M3B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">Total Users</div>
+													</div>
+												</div>
+											</div>
 										</div>
 
 									</div>
