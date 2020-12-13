@@ -5,7 +5,7 @@ session_regenerate_id(true);
 include('includes/config.php');
 
 if (strlen($_SESSION['alogin']) == 0) {
-	header("Location: index.php"); //
+	header("Location: index.php"); 
 } else { ?>
 	<table border="1">
 		<thead>
@@ -25,14 +25,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 				<th>service 2</th>
 				<th>Service 3</th>
 				<th>Amount</th>
-				<th>Payment ID</th>
 				<th>Date of payment</th>
 			</tr>
 		</thead>
 
 		<?php
 		$filename = "Registered Users";
-		$sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email`";
+		$sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`=0";
 		$query = $dbh->prepare($sql);
 		$query->execute();
 		$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -57,7 +56,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 <td>' . $Ser2 = $result->ser2 . '</td> 
 <td>' . $Ser3 = $result->ser3 . '</td>
 <td>' . $Amount = $result->amount . '</td> 
-<td>' . $Payment = $result->payment_id . '</td> 
 <td>' . $Date = $result->created_date . '</td> 					
 </tr>  
 ';
