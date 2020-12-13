@@ -7,6 +7,8 @@
 			</li>
 			<li><a href="search.php"><i class="fa fa-search"></i> &nbsp;Search</a>
 			</li>
+			<li><a href="finance.php"><i class="fa fa-cash"></i> &nbsp;Finance</a>
+			</li>
 			<li><a href="download.php"><i class="fa fa-download"></i> &nbsp;Download</a>
 			</li>
 		</ul>
