@@ -118,14 +118,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<th>NAME</th>
 												<th>EMAIL</th>
 												<th>BATCH</th>
-												<th>PAYMENT_ID</th>
-												<th>AMOUNT</th>
+												<th>PHONE</th>
 											</tr>
 										</thead>
 
 										<tbody>
 
-											<?php $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email`";
+											<?php $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`==0";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -138,8 +137,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<td><?php echo htmlentities($result->name); ?></td>
 														<td><?php echo htmlentities($result->email); ?></td>
 														<td><?php echo htmlentities($result->batch); ?></td>
-														<td><?php echo htmlentities($result->payment_id); ?></td>
-														<td><?php echo htmlentities($result->amount); ?></td>
+														<td><?php echo htmlentities($result->mobile); ?></td>
 														<td>
 															<br>
 															<a href="edit-user.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp;
