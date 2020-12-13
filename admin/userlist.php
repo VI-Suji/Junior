@@ -124,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 										<tbody>
 
-											<?php $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`==0";
+											<?php $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`=0";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
