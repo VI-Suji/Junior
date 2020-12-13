@@ -148,7 +148,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<?php } ?>
 															<br>
 															<!-- <a href="edit-pay.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp; -->
-															<a href="userlist.php?del=<?php echo $result->id; ?>&name=<?php echo htmlentities($result->email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+															<a href="userlist_finance.php?del=<?php echo $result->id; ?>&name=<?php echo htmlentities($result->email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
 														</td>
 													</tr>
 											<?php $cnt = $cnt + 1;
