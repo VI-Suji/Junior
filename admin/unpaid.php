@@ -124,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 										<tbody>
 
-											<?php $sql = "SELECT * FROM `register` WHERE NOT IN ( SELECT * from `payments`,`register` WHERE `register`.`email` = `payments`.`user_id` and `payments`.`flag`=1)";
+											<?php $sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
