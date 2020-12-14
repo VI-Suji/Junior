@@ -76,14 +76,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<div class="panel-body bk-primary text-light">
 													<div class="stat-panel text-center">
 														<?php
-														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='M3B'";
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='M1A'";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
 														?>
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
-														<div class="stat-panel-title text-uppercase">TOTAL USERS : M3B</div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : M1A</div>
 													</div>
 												</div>
 											</div>
@@ -93,18 +93,223 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<div class="panel-body bk-primary text-light">
 													<div class="stat-panel text-center">
 														<?php
-														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='C3B'";
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='M1B'";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
 														?>
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
-														<div class="stat-panel-title text-uppercase">TOTAL USERS : C3B</div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : M1B</div>
 													</div>
 												</div>
 											</div>
 										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='M1C'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : M1C</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='T1A'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : T1A</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='T1B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : T1B</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='E1A'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : E1A</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='E1B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : E1B</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='H1'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : H1</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='AR1A'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : AR1A</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='AR1B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : AR1B</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='R1A'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : R1A</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='R1B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : R1B</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='C1A'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : C1A</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `register`.`batch`='C1B'";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">TOTAL USERS : C1B</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
 								</div>
 							</div>
 						</div>
