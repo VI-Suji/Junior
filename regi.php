@@ -3,7 +3,7 @@ include('includes/config.php');
 if (isset($_POST['Save'])) {
 	$flag = 0;
 	$temp = $_POST['interest'];
-	if ((count($temp) < 2)) {
+	if ((count($temp) != 2)) {
 		$error = "Enter atleast 2";
 		$flag = 1;
 	} else {
@@ -11,7 +11,7 @@ if (isset($_POST['Save'])) {
 		$inter2 = $temp[1];
 	}
 	$temp = $_POST['career'];
-	if ((count($temp) < 2)) {
+	if ((count($temp) != 2)) {
 		echo "<script type='text/javascript'>alert('Enter 2 career preferences');</script>";
 		$flag = 1;
 	} else {
@@ -19,7 +19,7 @@ if (isset($_POST['Save'])) {
 		$car2 = $temp[1];
 	}
 	$temp = $_POST['services'];
-	if ((count($temp) < 3)) {
+	if ((count($temp) != 3)) {
 		echo "<script type='text/javascript'>alert('Enter 3 Services');</script>";
 		$flag = 1;
 	} else {
@@ -27,12 +27,18 @@ if (isset($_POST['Save'])) {
 		$ser2 = $temp[1];
 		$ser3 = $temp[2];
 	}
+	$temp = $_POST['batch'];
+	if ((count($temp) != 1)) {
+		echo "<script type='text/javascript'>alert('Enter only 1 batch');</script>";
+		$flag = 1;
+	} else {
+		$batch = $temp[0];
+	}
 	if ($flag == 0) {
 		// echo "<script type='text/javascript'>alert('Flag error');</script>";
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$dob = $_POST['dob'];
-		$batch = strtoupper($_POST['batch']);
 		$address = $_POST['address'];
 		$mobile = $_POST['mobile'];
 		$password = md5($_POST['password']);
@@ -148,7 +154,7 @@ if (isset($_POST['Save'])) {
 						</h2>
 						<br>
 						<div class="inner">
-
+							<div class="form-row mt-1 mb-1">
 							<div class="form-row  col-sm-12">
 								<div class="form-holder form-holder-2 col-sm-6">
 									<fieldset>
@@ -159,7 +165,7 @@ if (isset($_POST['Save'])) {
 								<div class="form-holder form-holder-2 col-sm-6">
 									<fieldset>
 										<legend><i class="fas fa-mail-bulk"> Email</i></legend>
-										<input type="email" name="email" id="email" class="form-control " pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="@gmail.com/@tkmce.ac.in" required>
+										<input type="email" name="email" id="email" class="form-control " pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="@tkmce.ac.in" required>
 									</fieldset>
 									<div class="alert" role="alert" style="display: none;" id="emailalert">
 										<h6 class="p-0 m-0"> * please enter a valid email</h6>
@@ -174,12 +180,84 @@ if (isset($_POST['Save'])) {
 										<input type="date" class="form-control" id="first-name" name="dob" placeholder="Date of Birth" required>
 									</fieldset>
 								</div>
-								<div class="form-holder col-sm-6">
+								<div class=" form-group col-sm-6 col-12 p-2">
+
+									<div class="dropdown open drop-1">
+										<button class="btn  dropdown-toggle w-100" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<h5 class='title_c'>Batch</h5>
+										</button>
+										<div class="dropdown-menu w-100 pl-3 pr-3" aria-labelledby="triggerId">
+											<p class="dropdown-item pt-0 pb-0">
+												<div class="form-check">
+													<div id="check1" name="check1">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Sports">
+															Sports
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Games">
+															Games
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Reading">
+															Reading
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Literacy">
+															Literary
+														</label>
+													</div>
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Drama">
+															Drama
+														</label>
+													</div>
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Music">
+															Music
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Photography">
+															Photography
+														</label>
+													</div>
+													<script type="text/javascript">
+														$(document).ready(function() {
+															$("input[name='batch[]']").change(function() {
+																var maxAllowed = 2;
+																var cnt = $("input[name='batch[]']:checked").length;
+																if (cnt > maxAllowed) {
+																	$(this).prop("checked", "");
+																	alert('Select maximum ' + maxAllowed + ' batchs!');
+																}
+															});
+														});
+													</script>
+												</div>
+
+											</p>
+
+										</div>
+									</div>
+								</div>
+								<!-- <div class="form-holder col-sm-6">
 									<fieldset>
 										<legend><i class="fa fa-book" aria-hidden="true"> Batch</i></legend>
 										<input title="Eg. T1B/R1 etc" type="text" class="form-control" id="last-name" name="batch" placeholder="Eg: T1A" required>
 									</fieldset>
-								</div>
+								</div> -->
 							</div>
 							<div class="form-row col-sm-12">
 								<div class="form-holder form-holder-2 col-sm-6">
