@@ -2,8 +2,8 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if (strlen($_SESSION['alogin']) == 0) {
-	header('location:index.php');
+if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['finance']) == 0) {
+	header('location:finance.php');
 } else {
 	if (isset($_GET['del']) && isset($_GET['name'])) {
 		$id = $_GET['del'];

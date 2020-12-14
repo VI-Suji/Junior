@@ -6,8 +6,10 @@ if(isset($_POST['login']))
 $password=$_POST['password'];
 if($password=="finance@2020")
 {
-echo "<script type='text/javascript'> document.location = 'userlist_finance.php'; </script>";
+	$_SESSION['finance']=$password;
+	echo "<script type='text/javascript'> document.location = 'userlist_finance.php'; </script>";
 } else if($password=="Execom33"){
+	$_SESSION['register']=$password;
 	echo "<script type='text/javascript'> document.location = 'userlist.php'; </script>";
 } else {
 	echo "<script>alert('Invalid Details');</script>";

@@ -5,6 +5,7 @@ if(isset($_POST['login']))
 {
 $password=$_POST['password'];
  if($password=="Execom33"){
+    $_SESSION['register']=$password;
 	echo "<script type='text/javascript'> document.location = 'unpaid.php'; </script>";
 } else {
 	echo "<script>alert('Invalid Details');</script>";
