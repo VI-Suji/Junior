@@ -3,9 +3,9 @@
 
 			<li class="ts-label">Main</li>
 			<li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-			<li><a href="userlist.php"><i class="fa fa-users"></i> Userlist</a>
+			<li><a href="finance.php"><i class="fa fa-users"></i> Userlist</a>
 			</li>
-			<li><a href="unpaid.php"><i class="fa fa-users"></i> Unpaid</a>
+			<li><a href="fin.php"><i class="fa fa-users"></i> Unpaid</a>
 			</li>
 			<li><a href="search.php"><i class="fa fa-search"></i> &nbsp;Search</a>
 			</li>
