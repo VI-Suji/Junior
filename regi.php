@@ -335,7 +335,7 @@ if (isset($_POST['Save'])) {
 						</h2>
 						<br>
 						<div>
-							<h5 class="checkbox_head" style="color:rgb(109, 111, 216); text-align:center;">Select atleast 2 Interests,
+							<h5 class="checkbox_head" style="color:rgb(109, 111, 216); text-align:center;">Select only 2 Interests,
 								2 Career preferences and 3 Services</h5>
 							<div class="form-row mt-1 mb-1">
 
