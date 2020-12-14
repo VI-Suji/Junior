@@ -132,10 +132,8 @@ if (isset($_POST['Save'])) {
 </head>
 
 <body>
-	<div class="container">
-
 	<div class="page-content">
-		<div class="form-v1-content">
+		<div class="container form-v1-content">
 			<div class="wizard-form">
 				<form class="form-register" method="post">
 					<div id="form-total">
@@ -585,8 +583,6 @@ if (isset($_POST['Save'])) {
 				</form>
 			</div>
 		</div>
-	</div>
-
 	</div>
 	<script src="reg/js/jquery-3.3.1.min.js"></script>
 	<!-- <script src="registration/js/jquery.steps.js"></script> -->
