@@ -65,7 +65,7 @@ if (isset($_POST['login'])) {
                                 <form method="post">
 
                                     <label for="" class="text-uppercase text-sm">Your Useremail </label>
-                                    <input type="text" placeholder="Username" name="username" class="form-control mb" required>
+                                    <input type="text" placeholder="Email" name="username" class="form-control mb" required>
 
                                     <label for="" class="text-uppercase text-sm">Password</label>
                                     <input type="password" placeholder="Password" name="password" class="form-control mb" required>
