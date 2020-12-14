@@ -191,46 +191,88 @@ if (isset($_POST['Save'])) {
 												<div class="form-check">
 													<div id="check1" name="check1">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Sports">
-															Sports
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="M1A">
+															M1A-MECH
 														</label>
 													</div>
 													<div class="form-check">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Games">
-															Games
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="M1B">
+															M1B-MECH
 														</label>
 													</div>
 													<div class="form-check">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Reading">
-															Reading
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="M1C">
+															M1C-MECH
 														</label>
 													</div>
 													<div class="form-check">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Literacy">
-															Literary
-														</label>
-													</div>
-
-													<div class="form-check">
-														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Drama">
-															Drama
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="T1A">
+															T1A-EC
 														</label>
 													</div>
 
 													<div class="form-check">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Music">
-															Music
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="T1B">
+															T1B-EC
+														</label>
+													</div>
+
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="E1A">
+															E1A-EEE
 														</label>
 													</div>
 													<div class="form-check">
 														<label class="form-check-label">
-															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="Photography">
-															Photography
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="E1B">
+															E1B-EEE
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="H1">
+															H1-CHEM
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="AR1A">
+															AR1A-ARCH
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="AR1B">
+															AR1B-ARCH
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="R1A">
+															R1A-CS
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="R1B">
+															R1B-CS
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="C1A">
+															C1A-CIVIL
+														</label>
+													</div>
+													<div class="form-check">
+														<label class="form-check-label">
+															<input type="checkbox" class="form-check-input" name="batch[]" id="batch" value="C1B">
+															C1B-CIVIL
 														</label>
 													</div>
 													<script type="text/javascript">
