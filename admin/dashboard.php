@@ -84,10 +84,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='M1A'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='M1A';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -113,10 +113,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='M1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='M1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -125,9 +125,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : M1B</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -141,10 +139,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='M1C'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='M1C';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -153,9 +151,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : M1C</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -172,10 +168,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='T1A'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='T1A';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -184,9 +180,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : T1A</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -200,10 +194,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='T1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='T1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -212,9 +206,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : T1B</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -231,10 +223,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='E1A'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='E1A';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -243,9 +235,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : E1A</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -259,10 +249,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='E1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='E1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -271,9 +261,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : E1B</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -291,10 +279,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='H1'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='H1';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -303,9 +291,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : H1</div>
-
-	
-	<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>												</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>												</div>
 												</div>
 											</div>
 										</div>
@@ -322,10 +308,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='AR1A'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='AR1A';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -350,10 +336,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='AR1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='AR1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -393,9 +379,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : R1A</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -409,10 +393,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='R1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='R1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -421,9 +405,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : R1B</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -440,10 +422,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='C1A'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='C1A';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -452,9 +434,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : C1A</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
@@ -468,8 +448,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='C1B'";
+														$sql = "SELECT * FROM register r WHERE r.batch =:batch AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
+														$batch='C1B';
+														$query-> bindParam(':batch', $batch, PDO::PARAM_STR);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg1 = $query->rowCount();
@@ -478,9 +460,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
 														
 														<div class="stat-panel-title text-uppercase">TOTAL USERS : C1B</div>
-														
-
-<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
+														<div class="stat-panel-title text-uppercase">TOTAL UNPAID : <?php echo htmlentities($bg1); ?></div>													</div>
 												</div>
 											</div>
 										</div>
