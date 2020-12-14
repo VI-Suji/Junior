@@ -381,9 +381,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
 														$bg = $query->rowCount();
-														?>
-														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) and `register`.`batch`='R1A'";
+														$sql = "SELECT * FROM register r WHERE `register`.`batch`='R1A' AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
