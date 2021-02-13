@@ -71,6 +71,24 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<a href="finance.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
 											</div>
 										</div>
+										<div class="col-md-3">
+											<div class="panel panel-default">
+												<div class="panel-body bk-primary text-light">
+													<div class="stat-panel text-center">
+														<?php
+														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
+														$query = $dbh->prepare($sql);
+														$query->execute();
+														$results = $query->fetchAll(PDO::FETCH_OBJ);
+														$bg = $query->rowCount();
+														?>
+														<div class="stat-panel-number h1 "><?php echo htmlentities($bg); ?></div>
+														<div class="stat-panel-title text-uppercase">Total Unpaid</div>
+													</div>
+												</div>
+												<a href="fin.php" class="block-anchor panel-footer">Full Detail <i class="fa fa-arrow-right"></i></a>
+											</div>
+										</div>
 									</div>
 									<div class="row">
 										<h1>MECHANICAL</h1>

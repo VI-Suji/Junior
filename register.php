@@ -1,4 +1,7 @@
 <?php
+//echo "<script type='text/javascript'>alert('Registration Site would be under maintenance between 10:30pm and 07:00am');</script>";
+//echo "<script type='text/javascript'> document.location = 'index.html'; </script>";
+//exit(0);
 include('includes/config.php');
 if (isset($_POST['Save'])) {
     $flag = 0;

@@ -1,4 +1,7 @@
 <?php
+// echo "<script type='text/javascript'>alert('Registration Site would be under maintenance between 10:30pm and 07:00am');</script>";
+// echo "<script type='text/javascript'> document.location = 'index.html'; </script>";
+// exit(0);
 session_start();
 include('includes/config.php');
 if (isset($_POST['login'])) {
@@ -15,7 +18,7 @@ if (isset($_POST['login'])) {
     $results = $query->fetchAll(PDO::FETCH_OBJ);
     if ($query->rowCount() > 0) {
         $_SESSION['alogin'] = $_POST['username'];
-        $sql = "SELECT * FROM payments WHERE contact_email=:email";
+        $sql = "SELECT * FROM payments WHERE user_id=:email";
         $query = $dbh->prepare($sql);
         $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
         $query->execute();

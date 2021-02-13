@@ -70,8 +70,9 @@
 session_start();
 include('includes/config.php');
 if (strlen($_SESSION['alogin']) != 0) {
-    $sql = "SELECT * FROM `payments` WHERE `contact_email`=:email";
+    $sql = "SELECT * FROM `payments` WHERE `user_id`=:email";
     $query = $dbh->prepare($sql);
+    $mail = $_SESSION['alogin'];
     $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -85,8 +86,7 @@ if (strlen($_SESSION['alogin']) != 0) {
                     <div class="col-md-10 mx-auto  ">
                         <div class="row p-4 mt-1 rounded " style="background-color:rgb(22, 22, 22); color:white;">
                             <img src="iste.png" class="img-responsive img-fluid col-md-1  col-sm-3  rounded-circle " id="img" alt="">
-                            <h2 class="mx-auto text-center col-md-11 my-auto"> INDIAN
-                                INDIAN SOCIETY FOR TECHNICAL EDUCATION </h2>
+                            <h2 class="mx-auto text-center col-md-11 my-auto">INDIAN SOCIETY FOR TECHNICAL EDUCATION </h2>
                         </div>
                         <h6 class="mx-auto  text-center p-2" style="border-bottom:1px solid;border-top:1px solid; font-weight:700; font-family: 'Varela Round', sans-serif;">
                             APPLICATION FORM FOR STUDENT
@@ -94,9 +94,9 @@ if (strlen($_SESSION['alogin']) != 0) {
                         <div class="row"></div>
                         <div class="table-responsive table-bordered table-striped table-inverse mx-auto" id="tabular">
                             <table class="table   p-2" style="border:1px ;">
-                                <?php $sql = "SELECT *FROM register WHERE email=:email";
+                                <?php $sql = "SELECT * FROM register WHERE email=:email";
                                 $query = $dbh->prepare($sql);
-                                $query->bindParam(':email', $_SESSION['alogin'], PDO::PARAM_STR);
+                                $query->bindParam(':email', $mail, PDO::PARAM_STR);
                                 $query->execute();
                                 $results = $query->fetchAll(PDO::FETCH_OBJ);
                                 $cnt = 0;

@@ -36,3 +36,17 @@ Stack trace:
 [23-Nov-2020 05:55:51 UTC] PHP Fatal error:  Call to a member function create() on null in /home/ezitmxze/test.istetkmce.in/Payment-Gateway/index.php on line 5
 [23-Nov-2020 05:55:53 UTC] PHP Fatal error:  Call to a member function create() on null in /home/ezitmxze/test.istetkmce.in/Payment-Gateway/index.php on line 5
 [23-Nov-2020 05:56:48 UTC] PHP Fatal error:  Call to a member function create() on null in /home/ezitmxze/test.istetkmce.in/Payment-Gateway/index.php on line 79
+[04-Jan-2021 15:52:09 UTC] PHP Fatal error:  Uncaught exception 'Razorpay\Api\Errors\BadRequestError' with message 'The payment id provided is null' in /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php:43
+Stack trace:
+#0 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php(22): Razorpay\Api\Entity->validateIdPresence(NULL)
+#1 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Payment.php(14): Razorpay\Api\Entity->fetch(NULL)
+#2 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/razorPaySuccess.php(9): Razorpay\Api\Payment->fetch(NULL)
+#3 {main}
+  thrown in /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php on line 43
+[04-Jan-2021 15:52:52 UTC] PHP Fatal error:  Uncaught exception 'Razorpay\Api\Errors\BadRequestError' with message 'The payment id provided is null' in /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php:43
+Stack trace:
+#0 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php(22): Razorpay\Api\Entity->validateIdPresence(NULL)
+#1 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Payment.php(14): Razorpay\Api\Entity->fetch(NULL)
+#2 /home/ezitmxze/join.istetkmce.in/Payment-Gateway/razorPaySuccess.php(9): Razorpay\Api\Payment->fetch(NULL)
+#3 {main}
+  thrown in /home/ezitmxze/join.istetkmce.in/Payment-Gateway/src/Entity.php on line 43

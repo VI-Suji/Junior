@@ -34,13 +34,17 @@ if (isset($_POST['Save'])) {
 	} else {
 		$batch = $temp[0];
 	}
-	if ($flag == 0) {
+	$mobile = $_POST['mobile'];
+	if(strlen($mobile)!=10){
+	    echo "<script type='text/javascript'>alert('Enter correct mobile number');</script>";
+		$flag = 1;
+	}
+	if ($flag == 0) 
 		// echo "<script type='text/javascript'>alert('Flag error');</script>";
 		$name = $_POST['name'];
 		$email = $_POST['email'];
 		$dob = $_POST['dob'];
 		$address = $_POST['address'];
-		$mobile = $_POST['mobile'];
 		$password = md5($_POST['password']);
 
 		$sql = "SELECT * FROM `register` WHERE `email` = :email ";
@@ -64,7 +68,7 @@ if (isset($_POST['Save'])) {
 			if ($cnt < 10) {
 				$cnt = "0" . $cnt;
 			}
-			$id = "ISTETKMCE/20/" . $batch . "/" . $cnt;
+			$id = "ISTETKMCE/20/" . $batch . "/0/" . $cnt;
 
 			// echo ($id . '' . $name . '' . $email . '' . $batch . '' . $dob . '' . $address . '' . $mobile . '' . $inter1 . '' . $inter2 . '' . $car1 . '' . $car2 . '' . $ser1 . '' . $ser2 . '' . $ser3 . '' . $password . '');
 
@@ -94,12 +98,11 @@ if (isset($_POST['Save'])) {
 			$query->execute();
 			$results = $query->fetchAll(PDO::FETCH_OBJ);
 			if ($query->rowCount() > 0) {
-				echo "<script type='text/javascript'>alert('Successfully registered for ISTE TKMCE');</script>";
-				header('location:login.php');
+				echo "<script type='text/javascript'>alert('Login for continue with payment');</script>";
+				echo "<script type='text/javascript'> document.location = 'login.php'; </script>";
 			}
 		}
 	}
-}
 ?>
 <html>
 
@@ -577,7 +580,7 @@ if (isset($_POST['Save'])) {
 							functioning of Student Chapters.Single Student Membership will not be entertained. <br>
 							Kindly apply
 							along with all Students and through ISTE Student Chapter only.</p>
-						<div style="text-align:center;"> <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Register</button>&nbsp; <a href="login.php" class="btn btn-lg pt-1 pb-1">Login </a></div>
+						<div style="text-align:center;"> <button name="Save" type="submit" class="btn btn-lg pt-1 pb-1">Register</button></div>
 						<div style="text-align:center;"> </div>
 					</div>
 				</form>
