@@ -2,14 +2,15 @@
 session_start();
 error_reporting(0);
 include('includes/config.php');
-if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['finance']) == 0) {
-	header('location:finance.php');
+if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['register'])==0 ) {
+	header('location:fin.php');
 } else {
+    $batch=$_SESSION['alogin'];
 	if (isset($_GET['del']) && isset($_GET['name'])) {
 		$id = $_GET['del'];
 		$name = $_GET['name'];
 
-		$sql = "delete from payments WHERE user_id=:id";
+		$sql = "delete from user_voucher WHERE id=:id";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':id', $id, PDO::PARAM_STR);
 		$query->execute();
@@ -19,8 +20,8 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['finance']) == 0) {
 
 	if (isset($_REQUEST['unconfirm'])) {
 		$aeid = $_GET['unconfirm'];
-		$memstatus = 1;
-		$sql = "UPDATE payments SET flag=:status WHERE  user_id=:aeid";
+		$memstatus = 0;
+		$sql = "UPDATE register SET flag=:status WHERE  id=:aeid";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $memstatus, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
@@ -30,8 +31,8 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['finance']) == 0) {
 
 	if (isset($_REQUEST['confirm'])) {
 		$aeid = $_GET['confirm'];
-		$memstatus = 0;
-		$sql = "UPDATE payments SET flag=:status WHERE  user_id=:aeid";
+		$memstatus = 2;
+		$sql = "UPDATE register SET flag=:status WHERE  id=:aeid";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $memstatus, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
@@ -101,61 +102,64 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['finance']) == 0) {
 				<div class="container-fluid">
 
 					<div class="row">
-						
 						<div class="col-sm-1 col-lg-12 col-md-12">
 
-							<h2 class="page-title">Manage Users</h2>
+							<h2 class="page-title">Offline Payments</h2>
 
 							<!-- Zero Configuration Table -->
 							<div class="panel panel-default">
-							<a href="offline_finance.php" class="block-anchor panel-footer">Offline payment details <i class="fa fa-arrow-right"></i></a>
 								<div class="panel-heading">List Users</div>
 								<div class="panel-body">
 									<?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
+									<?php 
+											$flag=2;
+											$sql = "SELECT * from `register` WHERE `flag` = :flag";
+											$query = $dbh->prepare($sql);
+											$query-> bindParam(':flag', $flag, PDO::PARAM_STR);  
+											$query->execute();
+											$results = $query->fetchAll(PDO::FETCH_OBJ);
+											$cnt = 1;
+											if ($query->rowCount() > 0) { ?>
 									<table id="zctb" class="display table table-striped table-bordered table-hover table-responsive-md table-responsive-sm" cellspacing="0" width="100%">
 										<thead>
 											<tr>
 												<th>#</th>
 												<th>ID</th>
-												<th>PRODUCT_ID</th>
-												<th>PAYMENT_ID</th>
-												<th>CONTACT_NUMBER</th>
-												<th>DATE</th>
+												<th>NAME</th>
+												<th>EMAIL</th>
+												<th>BATCH</th>
+												<th>PHONE</th>
 											</tr>
 										</thead>
 
 										<tbody>
 
-											<?php $sql = "SELECT * from `payments`";
-											$query = $dbh->prepare($sql);
-											$query->execute();
-											$results = $query->fetchAll(PDO::FETCH_OBJ);
-											$cnt = 1;
-											if ($query->rowCount() > 0) {
+											<?php
 												foreach ($results as $result) {				?>
 													<tr>
 														<td><?php echo htmlentities($cnt); ?></td>
-														<td><?php echo htmlentities($result->user_id); ?></td>
-														<td><?php echo htmlentities($result->product_id); ?></td>
-														<td><?php echo htmlentities($result->payment_id); ?></td>
-														<td><?php echo htmlentities($result->contact_number); ?></td>
-                                                        <td><?php echo htmlentities($result->created_date); ?></td>
-                                                        
+														<td><?php echo htmlentities($result->id); ?></td>
+														<td><?php echo htmlentities($result->name); ?></td>
+														<td><?php echo htmlentities($result->email); ?></td>
+														<td><?php echo htmlentities($result->batch); ?></td>
+														<td><?php echo htmlentities($result->mobile); ?></td>
 														<td>
-                                                        <?php if($result->flag == 1)
-                                                    {?>
-                                                    <a href="userlist_finance.php?confirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Accept')">Accept <i class="fa fa-check-circle"></i></a> 
-                                                    <?php } else {?>
-                                                    <a href="userlist_finance.php?unconfirm=<?php echo htmlentities($result->user_id);?>" onclick="return confirm('Do you really want to Reject')">Reject <i class="fa fa-times-circle"></i></a>
-													<?php } ?>
 															<br>
-															<!-- <a href="edit-pay.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you want to Edit');"><i class="fa fa-pencil" style="color:blue">edit</i></a>&nbsp;&nbsp; -->
-															<a href="userlist_finance.php?del=<?php echo $result->user_id; ?>&name=<?php echo htmlentities($result->contact_email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp;
+															<!-- <?php if($result->flag == 0)
+                                                    {?>
+                                                    <a href="unpaid.php?confirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Confirm Payment')">Confirm Payment <i class="fa fa-check-circle"></i></a> 
+                                                    <?php } else {?>
+                                                    <a href="unpaid.php?unconfirm=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to Reject Payment')">Reject Payment <i class="fa fa-times-circle"></i></a>
+													<?php } ?> -->
+															<!-- <a href="unpaid.php?edit=<?php echo $result->id; ?>" onclick="return confirm('Do you confirm that he is paid');"><i class="fa fa-pencil" style="color:blue">paid</i></a>&nbsp;&nbsp; -->
+															<!-- <a href="userlist.php?del=<?php echo $result->id; ?>&name=<?php echo htmlentities($result->email); ?>" onclick="return confirm('Do you want to Delete');"><i class="fa fa-trash" style="color:red"></i></a>&nbsp;&nbsp; -->
 														</td>
 													</tr>
 											<?php $cnt = $cnt + 1;
 												}
-											} ?>
+											}else{ ?>
+                                                <div class="panel-heading">No one has paid offline</div>
+                                            <?php } ?>
 
 										</tbody>
 									</table>
