@@ -58,7 +58,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<div class="panel-body bk-primary text-light">
 													<div class="stat-panel text-center">
 														<?php
-														$sql = "SELECT `user_id` from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email`";
+														$sql = "SELECT * from `register` r WHERE `flag` = 2 or EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0 )";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -76,7 +76,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<div class="panel-body bk-primary text-light">
 													<div class="stat-panel text-center">
 														<?php
-														$sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
+														$sql = "SELECT * FROM register r WHERE `flag` = 0 AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
 														$query = $dbh->prepare($sql);
 														$query->execute();
 														$results = $query->fetchAll(PDO::FETCH_OBJ);

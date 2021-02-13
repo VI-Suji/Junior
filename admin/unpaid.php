@@ -124,7 +124,9 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['register'])==0 ) {
 
 										<tbody>
 
-											<?php $sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
+											<?php 
+											$sql = "SELECT * FROM register r WHERE `flag` = 0 AND NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0)";
+											// $sql = "SELECT * FROM register r WHERE NOT EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0) ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);

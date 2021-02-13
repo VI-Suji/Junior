@@ -107,6 +107,7 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['register'])==0) {
 
 							<!-- Zero Configuration Table -->
 							<div class="panel panel-default">
+							<a href="offline_finance.php" class="block-anchor panel-footer">Offline payment details <i class="fa fa-arrow-right"></i></a>
 								<div class="panel-heading">List Users</div>
 								<div class="panel-body">
 									<?php if ($error) { ?><div class="errorWrap" id="msgshow"><?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap" id="msgshow"><?php echo htmlentities($msg); ?> </div><?php } ?>
@@ -124,7 +125,9 @@ if (strlen($_SESSION['alogin']) == 0 && strlen($_SESSION['register'])==0) {
 
 										<tbody>
 
-											<?php $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`=0 ORDER BY `register`.`batch` ASC";
+											<?php 
+											$sql = "SELECT * from `register` r WHERE `flag` = 2 or EXISTS ( SELECT * FROM payments t WHERE t.user_id = r.email and flag = 0 ) ORDER BY r.batch ASC";
+											// $sql = "SELECT * from `payments`,`register` WHERE `payments`.`user_id` = `register`.`email` and `payments`.`flag`=0 ORDER BY `register`.`batch` ASC";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
